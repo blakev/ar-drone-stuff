@@ -16,42 +16,4 @@
 #     ar-drone-stuff, 2016
 # <<
 
-import os
-import sys
-import logging
-
-logger = logging.getLogger(__name__)
-
-this_folder = os.path.dirname(os.path.abspath(__file__))
-submodules_folder = os.path.abspath(os.path.join(this_folder, os.pardir, 'bin'))
-
-submodules = [
-    'ardrone'
-]
-
-# add our submodules to our path
-for m in submodules:
-    sys.path.insert(1, os.path.join(submodules_folder, m))
-
-try:
-    import libardrone
-    import arnetwork
-    import arvideo
-except ImportError:
-    print 'are you missing the submodules git repositories?'
-    raise
-
-
-from utils import (
-    drone, imaging, wifi
-)
-
-__all__ = [
-    'drone',
-    'imaging',
-    'wifi',
-    # ~~~~
-    'libardrone',
-    'arnetwork',
-    'arvideo'
-]
+from utils import libardrone
