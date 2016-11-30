@@ -1,0 +1,4 @@
+[submodule "python-ardrone"]
+	path = bin/ardrone
+	url = https://github.com/venthur/python-ardrone.git
+	branch = master
