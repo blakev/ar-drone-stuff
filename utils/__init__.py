@@ -18,6 +18,7 @@
 
 import os
 import sys
+import imp
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,9 +30,13 @@ submodules = [
     'ardrone'
 ]
 
+# we need to add this for distribution-packages, like opencv2
+sys.path.insert(1, '/usr/lib/python2.7/dist-packages')
+
 # add our submodules to our path
 for m in submodules:
     sys.path.insert(1, os.path.join(submodules_folder, m))
+
 
 try:
     import libardrone
@@ -39,6 +44,13 @@ try:
     import arvideo
 except ImportError:
     print 'are you missing the submodules git repositories?'
+    raise
+
+
+try:
+    import cv2
+except ImportError:
+    print 'have you installed opencv from your distribution?'
     raise
 
 
@@ -51,7 +63,8 @@ __all__ = [
     'imaging',
     'wifi',
     # ~~~~
-    'libardrone',
+    'cv2',
     'arnetwork',
-    'arvideo'
+    'arvideo',
+    'libardrone'
 ]

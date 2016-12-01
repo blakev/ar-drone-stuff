@@ -21,6 +21,7 @@ import subprocess
 
 logger = logging.getLogger(__name__)
 
+
 class Wifi(object):
 
     def __init__(self, device, access_point="blake_drone"):
